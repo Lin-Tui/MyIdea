@@ -1,0 +1,37 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon --exec ts-node app.ts",
+    "build-ts": "tsc",
+    "build:test": "rm -fr dist && npm run lint && npm run build-ts",
+    "serve:test": "cross-env NODE_ENV=development pm2 startOrReload pm2-start.json --no-daemon",
+    "build:production": "rm -fr dist && npm run lint && npm run build-ts",
+    "serve:production": "cross-env NODE_ENV=production pm2 startOrReload pm2-start.json --no-daemon",
+    "stop": "pm2 status && pm2 stop all"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/ip": "^1.1.0",
+    "@types/koa": "^2.13.4",
+    "@types/koa-bodyparser": "^4.3.7",
+    "@types/koa-router": "^7.4.4",
+    "@types/node": "^17.0.23",
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.15",
+    "pm2": "^5.2.0",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3"
+  },
+  "dependencies": {
+    "ip": "^1.1.5",
+    "koa": "^2.13.4",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^10.1.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.18.0"
+  }
+}
