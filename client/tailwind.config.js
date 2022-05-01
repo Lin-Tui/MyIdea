@@ -1,7 +1,7 @@
 module.exports = {
     mode: 'jit',
     purge: [
-        // ...
+        './src/**/*.{js,jsx,ts,tsx}',
         './node_modules/@vechaiui/**/*.{js,ts,jsx,tsx}', // path to vechaiui
     ],
     darkMode: 'class', // or 'media' or 'class'
