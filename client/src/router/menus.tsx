@@ -1,6 +1,6 @@
 import React, { Suspense, ReactElement } from 'react';
 import { Routes, Navigate, Route } from 'react-router-dom';
-import PrivateRoute from '../conponent/PrivateRoute';
+import PrivateRoute from '../component/PrivateRoute';
 import { MenuItem, menus } from './router.config';
 
 const MenuRoutes = () => {

@@ -1,5 +1,5 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
-import { TIMEOUT, BASE_URL } from './config';
+import { TIMEOUT, BASE_URL } from '../config/service.config';
 
 interface ResponseData<T = any> {
     err_no: number;

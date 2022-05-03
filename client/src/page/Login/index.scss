@@ -1,0 +1,18 @@
+.page-wrapper {
+    background-image: url('./images/bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    .show-password {
+        background-image: url('./images/password.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .hide-password {
+        background-image: url('./images/nopassword.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}

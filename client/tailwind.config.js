@@ -1,13 +1,17 @@
 module.exports = {
     mode: 'jit',
-    purge: [
-        './src/**/*.{js,jsx,ts,tsx}',
-        './node_modules/@vechaiui/**/*.{js,ts,jsx,tsx}', // path to vechaiui
-    ],
     darkMode: 'class', // or 'media' or 'class'
-    content: ['./src/**/*.{js,jsx,ts,tsx}'],
+    content: ['./src/**/*.{js,jsx,ts,tsx}', './node_modules/@vechaiui/**/*.{js,ts,jsx,tsx}'],
     theme: {
-        extend: {},
+        extend: {
+            colors: {},
+            fontSize: {
+                10: ['10px', '12px'],
+                11: ['11x', '13px'],
+                12: ['12px', '14px']
+
+            },
+        },
     },
     variants: {
         extend: {},
