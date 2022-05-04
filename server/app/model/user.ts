@@ -15,6 +15,9 @@ const userModel = sequelize.define(
         password: {
             type: Sequelize.STRING(255),
         },
+        salt: {
+            type: Sequelize.STRING(255),
+        },
     },
     {
         freezeTableName: true,
