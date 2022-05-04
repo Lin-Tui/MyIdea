@@ -1,22 +1,45 @@
 import React, { FC, useState } from 'react';
-import { FormControl, FormErrorMessage, Input, Button } from '@vechaiui/react';
+import { FormControl, FormErrorMessage, Input, Button, useMessage } from '@vechaiui/react';
 import { useForm } from 'react-hook-form';
+import { userRegister } from '../../../../service';
 const RegisterForm: FC = () => {
     const [loading, setLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const handleToggleShowPassword = () => setShowPassword(!showPassword);
-
+    const message = useMessage();
     const {
         register,
         formState: { errors },
         handleSubmit,
+        watch,
     } = useForm();
     const onSubmit = async (data: any) => {
         setLoading(true);
-        setTimeout(() => {
-            alert(JSON.stringify(data));
+        try {
+            const { password, username } = data;
+            const encodePassword = window.btoa(password);
+            const { err_no, err_tips } = await userRegister({
+                username,
+                password: encodePassword,
+            });
+            if (err_no === 0) {
+                message({
+                    message: '注册成功！',
+                    status: 'success',
+                    position: 'top',
+                });
+            } else {
+                message({
+                    message: err_tips || '注册失败',
+                    status: 'error',
+                    position: 'top',
+                });
+            }
             setLoading(false);
-        }, 500);
+        } catch (error: any) {
+            setLoading(false);
+            console.log(error);
+        }
     };
     return (
         <div>
@@ -72,9 +95,14 @@ const RegisterForm: FC = () => {
                             }
                         </Input.RightElement>
                     </Input.Group>
-                    {errors.password && errors.password.type === 'required' && (
+                    {errors.confirmPassword && errors.confirmPassword.type === 'required' && (
                         <FormErrorMessage>请填写确认密码</FormErrorMessage>
                     )}
+                    {watch('password') &&
+                        watch('confirmPassword') &&
+                        watch('password') !== watch('confirmPassword') && (
+                            <FormErrorMessage>两次输入的密码不符</FormErrorMessage>
+                        )}
                 </FormControl>
 
                 <Button

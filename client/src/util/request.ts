@@ -22,9 +22,9 @@ const instance = axios.create({
     baseURL: BASE_URL,
     timeout: TIMEOUT,
 });
+instance.defaults.headers.post['Content-Type'] = 'application/json';
 instance.interceptors.request.use(
     config => {
-        console.log('请求被拦截', config);
         return config;
     },
     err => {
@@ -35,10 +35,7 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
     res => {
         const { data } = res as AxiosResponse<ResponseData>;
-        if (data.err_no === 0) {
-            return data;
-        }
-        return Promise.reject(data.err_tips);
+        return data;
     },
     err => {
         handleError(err);
