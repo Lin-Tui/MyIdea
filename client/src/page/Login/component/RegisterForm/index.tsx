@@ -30,7 +30,7 @@ const RegisterForm: FC = () => {
                 });
             } else {
                 message({
-                    message: err_tips || '注册失败',
+                    message: err_tips || '注册失败,请重试',
                     status: 'error',
                     position: 'top',
                 });
@@ -39,6 +39,11 @@ const RegisterForm: FC = () => {
         } catch (error: any) {
             setLoading(false);
             console.log(error);
+            message({
+                message: '网络异常，请重试',
+                status: 'error',
+                position: 'top',
+            });
         }
     };
     return (

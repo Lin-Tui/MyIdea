@@ -1,13 +1,14 @@
 import { Context } from 'koa';
 import UserService from '../service/user';
 import Joi from 'joi';
+import { ErrorCode, ErrTipMap } from '../constant/errCode';
 export default class UserController {
     /**
      * 用户信息
      * @param {Context} ctx
      * @memberof UserController
      */
-    public static async userRegister(ctx: Context) {
+    public static async register(ctx: Context) {
         const request: { username: string; password: string } = ctx.request.body;
         const schema = Joi.object({
             username: Joi.string().required(),
@@ -16,30 +17,39 @@ export default class UserController {
         try {
             schema.validateAsync(request);
             const decodePassword = new (Buffer as any).from(request.password, 'base64').toString();
-            const encrypted = decodePassword; //TODO加密
-            const res = await UserService.userRegister(request.username, encrypted);
+            const encrypted = decodePassword;
+            const res = await UserService.register(request.username, encrypted);
             ctx.status = 200;
             ctx.body = res;
         } catch (error: any) {
             console.log(error);
             ctx.status = 200;
             ctx.body = {
-                err_no: -1,
-                err_tips: error.message || '注册失败',
+                err_no: ErrorCode.UnknowError,
+                err_tips: error.message || ErrTipMap.UnknowError,
             };
         }
     }
-    public static userLogin(ctx: Context) {
-        // const request: any = ctx.request.body;
-        // const { appId } = ctx.params;
-        ctx.status = 200;
-        ctx.body = {
-            code: 0,
-            msg: '成功',
-            data: {
-                userName: 'linxia',
-                userPassword: '123',
-            },
-        };
+    public static async login(ctx: Context) {
+        const request: { username: string; password: string } = ctx.request.body;
+        const schema = Joi.object({
+            username: Joi.string().required(),
+            password: Joi.string().required(),
+        });
+        try {
+            schema.validateAsync(request);
+            const decodePassword = new (Buffer as any).from(request.password, 'base64').toString();
+            const encrypted = decodePassword;
+            const res = await UserService.login(request.username, encrypted);
+            ctx.status = 200;
+            ctx.body = res;
+        } catch (error: any) {
+            console.log(error);
+            ctx.status = 200;
+            ctx.body = {
+                err_no: ErrorCode.UnknowError,
+                err_tips: error.message || ErrTipMap.UnknowError,
+            };
+        }
     }
 }

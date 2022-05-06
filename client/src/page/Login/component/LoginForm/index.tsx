@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
-import { FormControl, FormErrorMessage, Input, Button } from '@vechaiui/react';
+import { FormControl, FormErrorMessage, Input, Button, useMessage } from '@vechaiui/react';
+import { userLogin } from '../../../../service';
 import { useForm } from 'react-hook-form';
 const LoginForm: FC = () => {
     const [loading, setLoading] = useState(false);
@@ -10,12 +11,44 @@ const LoginForm: FC = () => {
         formState: { errors },
         handleSubmit,
     } = useForm();
+    const message = useMessage();
     const onSubmit = async (data: any) => {
         setLoading(true);
-        setTimeout(() => {
-            alert(JSON.stringify(data));
+        const { username, password } = data;
+        try {
+            const encodePassword = window.btoa(password);
+            const {
+                err_no,
+                err_tips,
+                // data: resData,
+            } = await userLogin({
+                username,
+                password: encodePassword,
+            });
+            if (err_no === 0) {
+                message({
+                    message: '登录成功',
+                    status: 'success',
+                    position: 'top',
+                });
+                // TODO
+            } else {
+                message({
+                    message: err_tips || '登录失败，请重试',
+                    status: 'error',
+                    position: 'top',
+                });
+            }
             setLoading(false);
-        }, 500);
+        } catch (error: any) {
+            setLoading(false);
+            console.log(error);
+            message({
+                message: '网络异常，请重试',
+                status: 'error',
+                position: 'top',
+            });
+        }
     };
     return (
         <div>
