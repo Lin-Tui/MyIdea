@@ -40,7 +40,7 @@ export default class UserController {
             schema.validateAsync(request);
             const decodePassword = new (Buffer as any).from(request.password, 'base64').toString();
             const encrypted = decodePassword;
-            const res = await UserService.login(request.username, encrypted);
+            const res = await UserService.login(ctx, request.username, encrypted);
             ctx.status = 200;
             ctx.body = res;
         } catch (error: any) {

@@ -3,6 +3,7 @@ const sequelize = require('../config/sequelizeBase');
 import { getRandomSalt, getEncrypt } from '../util/encrypt';
 import { ErrorCode, ErrTipMap } from '../constant/errCode';
 import userModel from '../model/user';
+import { Context } from 'koa';
 export default class UserService {
     public static async register(username: string, password: string) {
         try {
@@ -39,7 +40,7 @@ export default class UserService {
             };
         }
     }
-    public static async login(username: string, password: string) {
+    public static async login(ctx: Context, username: string, password: string) {
         try {
             const userInfo = await userModel.findOne({
                 where: {
@@ -56,6 +57,7 @@ export default class UserService {
                     };
                 } else {
                     // TODO redis缓存 + cookie
+                    ctx.session.count = '122'; // TODO报错
                     return {
                         err_no: 0,
                         err_tips: '登录成功',
