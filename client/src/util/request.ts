@@ -23,6 +23,7 @@ const instance = axios.create({
     timeout: TIMEOUT,
 });
 instance.defaults.headers.post['Content-Type'] = 'application/json';
+instance.defaults.withCredentials = true;
 instance.interceptors.request.use(
     config => {
         return config;

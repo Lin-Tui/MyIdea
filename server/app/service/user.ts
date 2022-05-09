@@ -57,7 +57,11 @@ export default class UserService {
                     };
                 } else {
                     // TODO redis缓存 + cookie
-                    ctx.session.count = '122'; // TODO报错
+                    console.log('console-0', ctx.session);
+                    ctx.session = {
+                        username: username,
+                    };
+                    console.log('console-2', ctx.cookies);
                     return {
                         err_no: 0,
                         err_tips: '登录成功',

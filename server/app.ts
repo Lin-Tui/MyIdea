@@ -4,33 +4,30 @@ import AddressIp from 'ip';
 import Cors from 'koa2-cors';
 import corsHandler from './app/middleware/cors';
 import User from './app/router/user';
-const Session = require('koa-generic-session');
-const redisStore = require('koa-redis');
+const session = require('koa-session');
+const Store = require('../server/app/util/redisStore');
+const shortid = require('shortid');
 const redisConfig = require('./app/config/redisBase');
-// TODO疑惑:
-// 如果用 import redisStore from 'koa-redis':
-// const store = new (redisStore as any)({
-//     host: redisConfig.host,
-//     port: redisConfig.port,
-// }).client;
+const sessionConfig = {
+    key: 'koa:sess',
+    maxAge: 86400000,
+    signed: false,
+    // 提供外部 Store
+    store: new Store({
+        redis: {
+            port: redisConfig.port,
+            host: redisConfig.host,
+        },
+    }),
+    // key 的生成函数
+    genid: () => shortid.generate(),
+};
+
 const app = new Koa();
 app.use(BodyParser());
 app.use(Cors(corsHandler));
-app.keys = ['Lineve#_ppx'];
-app.use(
-    Session({
-        prefix: 'ppx',
-        key: 'key',
-        cookie: {
-            path: '/',
-            httpOnly: true,
-            maxAge: 24 * 60 * 60 * 1000,
-        },
-        store: redisStore({
-            all: `${redisConfig.host}:${redisConfig.port}`,
-        }),
-    })
-);
+app.use(session(sessionConfig, app));
+
 app.use(User.routes()).use(User.allowedMethods());
 app.listen(3003, () => {
     console.log(`http://${AddressIp.address()}:3003`);
