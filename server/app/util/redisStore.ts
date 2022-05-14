@@ -1,5 +1,6 @@
 const Redis = require('ioredis');
 import { RedisConf } from '../type';
+const redisConfig = require('../config/redisBase');
 // 编写的 Store 类，必须要有 get() set() destory() 这三个方法
 class RedisStore {
     redis: typeof Redis;
@@ -18,4 +19,9 @@ class RedisStore {
     }
 }
 
-module.exports = RedisStore;
+const redisStore = new RedisStore({
+    port: redisConfig.port,
+    host: redisConfig.host,
+});
+
+module.exports = redisStore;

@@ -1,9 +1,10 @@
-const Sequelize = require('sequelize');
-const sequelize = require('../config/sequelizeBase');
 import { getRandomSalt, getEncrypt } from '../util/encrypt';
 import { ErrorCode, ErrTipMap } from '../constant/errCode';
+import { getCookieString } from '../util/customCookie';
 import userModel from '../model/user';
 import { Context } from 'koa';
+const redisStore = require('../util/redisStore');
+
 export default class UserService {
     public static async register(username: string, password: string) {
         try {
@@ -48,7 +49,7 @@ export default class UserService {
                 },
             });
             if (userInfo) {
-                const { salt, password: realPassword } = userInfo.dataValues;
+                const { salt, password: realPassword, id } = userInfo.dataValues;
                 const encryptPassword = getEncrypt(password + salt);
                 if (realPassword !== encryptPassword) {
                     return {
@@ -56,12 +57,26 @@ export default class UserService {
                         err_tips: ErrTipMap.InvalidPassword,
                     };
                 } else {
-                    // TODO redis缓存 + cookie
-                    console.log('console-0', ctx.session);
-                    ctx.session = {
+                    const encryptSessionId = getEncrypt(password + id + getRandomSalt());
+                    // createTS: 是session的创建时间
+                    // maxAge: 是session的有效时间，暂定未7天
+                    // expiresTS: 是session的最终过期时间（expiresTS > createTS + maxAge）,暂定为30天
+                    const sessionValue = {
+                        id: id,
                         username: username,
+                        createTS: new Date().getTime(),
+                        maxAge: 7 * 86400000,
+                        expiresTS: 86400000 * 30,
                     };
-                    console.log('console-2', ctx.cookies);
+                    redisStore.set(encryptSessionId, sessionValue, 40 * 86400000);
+                    const customCookie = getCookieString({
+                        key: 'koa.sess',
+                        value: encryptSessionId,
+                        maxAge: 86400000 * 10,
+                        httpOnly: false,
+                        signed: false,
+                    });
+                    ctx.set('Authorization', customCookie);
                     return {
                         err_no: 0,
                         err_tips: '登录成功',

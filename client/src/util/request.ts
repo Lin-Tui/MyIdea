@@ -9,7 +9,6 @@ interface ResponseData<T = any> {
 
 const ErrorCodeMap: Record<number, string> = {
     400: '请求参数错误',
-    401: '权限不足, 请重新登录',
     403: '服务器拒绝本次访问',
     404: '请求资源未找到',
     500: '内部服务器错误',
@@ -19,13 +18,16 @@ const ErrorCodeMap: Record<number, string> = {
 };
 
 const instance = axios.create({
+    withCredentials: true,
     baseURL: BASE_URL,
     timeout: TIMEOUT,
 });
 instance.defaults.headers.post['Content-Type'] = 'application/json';
-instance.defaults.withCredentials = true;
 instance.interceptors.request.use(
     config => {
+        if (config.headers) {
+            config.headers.Authorization = document.cookie;
+        }
         return config;
     },
     err => {
@@ -33,14 +35,17 @@ instance.interceptors.request.use(
         return err;
     }
 );
+
 instance.interceptors.response.use(
     res => {
         const { data } = res as AxiosResponse<ResponseData>;
+        if (res.headers['authorization']) {
+            document.cookie = res.headers['authorization'];
+        }
         return data;
     },
     err => {
         handleError(err);
-        return Promise.reject(err);
     }
 );
 
@@ -51,9 +56,6 @@ function handleError(err: AxiosError) {
                 ? ErrorCodeMap[err.response.status]
                 : err.response.data.message;
         console.log(errTips);
-        if (err.response.status === 401) {
-            console.log('跳转到登录页');
-        }
         return Promise.reject(err);
     } else {
         console.log('请求超时，请刷新重试');

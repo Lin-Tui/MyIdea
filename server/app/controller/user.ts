@@ -2,6 +2,8 @@ import { Context } from 'koa';
 import UserService from '../service/user';
 import Joi from 'joi';
 import { ErrorCode, ErrTipMap } from '../constant/errCode';
+const redisStore = require('../util/redisStore');
+
 export default class UserController {
     /**
      * 用户信息
@@ -45,6 +47,63 @@ export default class UserController {
             ctx.body = res;
         } catch (error: any) {
             console.log(error);
+            ctx.status = 200;
+            ctx.body = {
+                err_no: ErrorCode.UnknowError,
+                err_tips: error.message || ErrTipMap.UnknowError,
+            };
+        }
+    }
+    public static async isLogin(ctx: Context) {
+        try {
+            const authorization = ctx.request.header.authorization;
+            if (!authorization) {
+                ctx.status = 200;
+                ctx.body = {
+                    err_no: 0,
+                    err_tips: '请求成功',
+                    data: {
+                        isLogin: false,
+                    },
+                };
+            } else {
+                const sessionId = authorization?.slice(9);
+                const sessionValue = await redisStore.get(sessionId);
+                if (!sessionValue) {
+                    ctx.status = 200;
+                    ctx.body = {
+                        err_no: 0,
+                        err_tips: '请求成功',
+                        data: {
+                            isLogin: false,
+                        },
+                    };
+                    return;
+                }
+                const { createTS, maxAge, expiresTS } = sessionValue;
+                const nowTS = new Date().getTime();
+                if (nowTS - createTS >= maxAge) {
+                    ctx.status = 200;
+                    ctx.body = {
+                        err_no: 0,
+                        err_tips: '请求成功',
+                        data: {
+                            isLogin: false,
+                        },
+                    };
+                    return;
+                } else {
+                    ctx.status = 200;
+                    ctx.body = {
+                        err_no: 0,
+                        err_tips: ErrTipMap.RepeatLogin,
+                        data: {
+                            isLogin: true,
+                        },
+                    };
+                }
+            }
+        } catch (error: any) {
             ctx.status = 200;
             ctx.body = {
                 err_no: ErrorCode.UnknowError,

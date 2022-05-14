@@ -17,3 +17,13 @@ export interface UserRegisterResponse {
     err_no: number;
     err_tips: string;
 }
+
+export interface EmptyRequest {}
+
+export interface UserIsLoginResponse {
+    err_no: number;
+    err_tips: string;
+    data?: {
+        isLogin: boolean;
+    };
+}
