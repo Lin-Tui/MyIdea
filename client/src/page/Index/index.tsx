@@ -4,8 +4,7 @@ import ThemSwitcher from '../../component/ThemeSwitch';
 const Index: FC = () => {
     return (
         <div>
-            index
-            <ThemSwitcher />
+            {/* <ThemSwitcher /> */}
             <MenuRoutes />
         </div>
     );

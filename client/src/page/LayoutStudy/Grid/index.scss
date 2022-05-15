@@ -1,0 +1,82 @@
+.wrapper {
+    /* 声明一个容器 */
+    display: grid;
+    /*  声明列的宽度  */
+    // grid-template-columns: 100px 100px 100px;
+    // grid-template-columns: repeat(3, 300px);
+    //grid-template-columns: repeat(3, 1fr);
+    // auto-fill 关键字：表示自动填充，让一行（或者一列）中尽可能的容纳更多的单元格
+    // grid-template-columns: repeat(auto-fill, 200px);
+    // grid-template-columns: 200px 1fr 3fr;
+    // grid-template-columns: 1fr 2fr minmax(200px, 3fr);
+    grid-template-columns: 300px 500px 300px;
+
+    /*  声明行间距和列间距  */
+    grid-gap: 20px 30px;
+    // 以上等同于：
+    // grid-row-gap: 20px;
+    // grid-column-gap: 30px;
+    /*  声明行的高度  */
+    grid-template-rows: 100px 200px;
+    // grid-auto-rows: minmax(100px, auto);
+    grid-auto-rows: 50px;
+    grid-auto-flow: row;
+    // justify-items: center;
+    // align-items: stretch;
+    justify-content: center;
+    // align-content: center;
+}
+
+.one {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    background: #19caad;
+}
+.two {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    /*   如果有重叠，就使用 z-index */
+    z-index: 1;
+    background: #8cc7b5;
+}
+.three {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 4;
+    background: #d1ba74;
+}
+.four {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 5;
+    background: #bee7e9;
+}
+.five {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 5;
+    background: #e6ceac;
+}
+.six {
+    grid-column: 3;
+    grid-row: 4;
+    background: #ecad9e;
+}
+
+.seven {
+    background: #d0b1f9;
+}
+.eight {
+    background: #edb476;
+}
+.item {
+    text-align: center;
+    font-size: 200%;
+    color: #fff;
+    // justify-self: center;
+}

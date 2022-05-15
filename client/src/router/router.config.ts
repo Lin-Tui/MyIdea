@@ -1,7 +1,7 @@
 import { lazy, ComponentType } from 'react';
 
 const Home = lazy(() => import('../page/Home'));
-
+const LayoutStudy = lazy(() => import('../page/LayoutStudy'));
 export interface MenuItem {
     title: string;
     icon?: string;
@@ -15,5 +15,11 @@ export const menus: Array<MenuItem> = [
         icon: 'home',
         path: '/home',
         component: Home,
+    },
+    {
+        title: '布局',
+        icon: 'grid',
+        path: '/layout',
+        component: LayoutStudy,
     },
 ];
