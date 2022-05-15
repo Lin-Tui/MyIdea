@@ -1,5 +1,8 @@
 import React, { FC } from 'react';
+import { useAppSelector } from '../../store/index';
+
 const Home: FC = () => {
-    return <div>home</div>;
+    const user = useAppSelector(state => state.user);
+    return <div>{user.username}</div>;
 };
 export default Home;

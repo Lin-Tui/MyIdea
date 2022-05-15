@@ -6,6 +6,9 @@ export interface UserLoginRequest {
 export interface UserLoginResponse {
     err_no: number;
     err_tips: string;
+    data: {
+        username: string;
+    };
 }
 
 export interface UserRegisterRequest {

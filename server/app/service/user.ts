@@ -80,6 +80,9 @@ export default class UserService {
                     return {
                         err_no: 0,
                         err_tips: '登录成功',
+                        data: {
+                            username,
+                        },
                     };
                 }
             } else {

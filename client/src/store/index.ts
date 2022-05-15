@@ -1,10 +1,10 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import userReducer from './features/userSlice';
+import { userSlice } from './features/userSlice';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 export const store = configureStore({
     reducer: {
-        user: userReducer,
+        [userSlice.name]: userSlice.reducer,
     },
 });
 

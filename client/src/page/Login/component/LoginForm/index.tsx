@@ -2,6 +2,10 @@ import React, { FC, useState } from 'react';
 import { FormControl, FormErrorMessage, Input, Button, useMessage } from '@vechaiui/react';
 import { userLogin } from '../../../../service';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../../../store/index';
+import { userActions } from '../../../../store/features/userSlice';
+
 const LoginForm: FC = () => {
     const [loading, setLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
@@ -11,6 +15,8 @@ const LoginForm: FC = () => {
         formState: { errors },
         handleSubmit,
     } = useForm();
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
     const message = useMessage();
     const onSubmit = async (data: any) => {
         setLoading(true);
@@ -20,18 +26,19 @@ const LoginForm: FC = () => {
             const {
                 err_no,
                 err_tips,
-                // data: resData,
+                data: resData,
             } = await userLogin({
                 username,
                 password: encodePassword,
             });
             if (err_no === 0) {
+                dispatch(userActions.setUserInfo({ username: resData.username }));
                 message({
                     message: '登录成功',
                     status: 'success',
                     position: 'top',
                 });
-                // TODO
+                navigate('/home');
             } else {
                 message({
                     message: err_tips || '登录失败，请重试',

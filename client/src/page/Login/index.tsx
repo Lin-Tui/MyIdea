@@ -3,21 +3,22 @@ import LoginForm from './component/LoginForm';
 import ResigerForm from './component/RegisterForm';
 import { userIsLogin } from '../../service';
 import { useMessage } from '@vechaiui/react';
+import { useNavigate } from 'react-router-dom';
 
 import './index.scss';
 const Login: FC = () => {
     const message = useMessage();
     const [isLogin, setIsLogin] = useState<boolean>(true);
+    const navigate = useNavigate();
     const hasLogin = async () => {
         const { err_no, err_tips, data } = await userIsLogin();
         if (err_no === 0 && data?.isLogin) {
-            // TODO
             message({
                 message: err_tips,
                 status: 'success',
                 position: 'top',
             });
-            console.log('跳转到首页');
+            navigate('/home');
         }
     };
     useEffect(() => {
