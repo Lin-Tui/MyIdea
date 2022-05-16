@@ -7,15 +7,15 @@ const Grid: FC = () => {
     return (
         <div>
             <div className="font-bold text-30 w-srceen text-center mt-80 mb-80">Grid 布局</div>
-            <div className="wrapper">
-                <div className="one item">One</div>
-                <div className="two item">Two</div>
-                <div className="three item">Three</div>
-                <div className="four item">Four</div>
-                <div className="five item">Five</div>
-                <div className="six item">Six</div>
-                <div className="seven item">Seven</div>
-                <div className="eight item">Eight</div>
+            <div className="grip-wrapper">
+                <div className="grid-one grid-item">One</div>
+                <div className="grid-two grid-item">Two</div>
+                <div className="grid-three grid-item">Three</div>
+                <div className="grid-four grid-item">Four</div>
+                <div className="grid-five grid-item">Five</div>
+                <div className="grid-six grid-item">Six</div>
+                <div className="grid-seven grid-item">Seven</div>
+                <div className="grid-eight grid-item">Eight</div>
             </div>
         </div>
     );

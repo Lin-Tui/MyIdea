@@ -1,4 +1,7 @@
-.wrapper {
+.grip-wrapper {
+    width: 100%;
+    height: 800px;
+    background-color: rgb(240, 238, 238);
     /* 声明一个容器 */
     display: grid;
     /*  声明列的宽度  */
@@ -24,15 +27,15 @@
     // justify-items: center;
     // align-items: stretch;
     justify-content: center;
-    // align-content: center;
+    align-content: center;
 }
 
-.one {
+.grid-one {
     grid-column-start: 1;
     grid-column-end: 2;
     background: #19caad;
 }
-.two {
+.grid-two {
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 1;
@@ -41,40 +44,40 @@
     z-index: 1;
     background: #8cc7b5;
 }
-.three {
+.grid-three {
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 4;
     background: #d1ba74;
 }
-.four {
+.grid-four {
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 2;
     grid-row-end: 5;
     background: #bee7e9;
 }
-.five {
+.grid-five {
     grid-column-start: 2;
     grid-column-end: 2;
     grid-row-start: 2;
     grid-row-end: 5;
     background: #e6ceac;
 }
-.six {
+.grid-six {
     grid-column: 3;
     grid-row: 4;
     background: #ecad9e;
 }
 
-.seven {
+.grid-seven {
     background: #d0b1f9;
 }
-.eight {
+.grid-eight {
     background: #edb476;
 }
-.item {
+.grid-item {
     text-align: center;
     font-size: 200%;
     color: #fff;

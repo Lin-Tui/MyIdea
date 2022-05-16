@@ -1,0 +1,69 @@
+.flex-wrapper {
+    display: flex;
+    background-color: rgb(240, 238, 238);
+    width: 100%;
+    height: 400px;
+    justify-content: space-evenly;
+    align-items: center;
+    // flex-flow: row;
+    // flex-flow: wrap;
+    flex-flow: row wrap;
+    // 相当于下面两个属性：
+    // flex-wrap: wrap;
+    // flex-direction: row;
+    // align-content: center;
+}
+
+.flex-one {
+    background: #19caad;
+    // flex: 1;
+    // align-self: flex-start;
+    flex-basis: 100px;
+    // flex-grow: 1;
+    // flex-shrink: 1;
+}
+.flex-two {
+    background: #8cc7b5;
+    flex-basis: 200px;
+    // flex: 1;
+    // align-self: flex-end;
+    // flex-grow: 2;
+}
+.flex-three {
+    background: #d1ba74;
+    // flex: 1;
+    // align-self: baseline;
+    // flex-grow: 4;
+    // order: 1;
+}
+.flex-four {
+    background: #bee7e9;
+    flex-basis: 300px;
+    // order: 2;
+    // flex: 3;
+    // align-self: center;
+}
+.flex-five {
+    background: #e6ceac;
+    // flex: 1;
+    // align-self: stretch;
+}
+.flex-six {
+    background: #ecad9e;
+    // flex: 1;
+}
+.flex-seven {
+    background: #d0b1f9;
+    // flex: 2;
+}
+.flex-eight {
+    background: #edb476;
+    // flex: 1;
+}
+.flex-item {
+    text-align: center;
+    font-size: 200%;
+    color: #fff;
+    width: 400px;
+    height: 100px;
+}
