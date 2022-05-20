@@ -7,7 +7,7 @@ const Grid: FC = () => {
     return (
         <div>
             <div className="font-bold text-30 w-srceen text-center mt-80 mb-80">Grid 布局</div>
-            <div className="grip-wrapper">
+            <div className="grip-wrapper bg-gray1">
                 <div className="grid-one grid-item">One</div>
                 <div className="grid-two grid-item">Two</div>
                 <div className="grid-three grid-item">Three</div>
