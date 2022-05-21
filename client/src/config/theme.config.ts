@@ -6,8 +6,8 @@ export const blueLight: ColorScheme = {
     type: 'light',
     colors: {
         bg: {
-            base: 'white',
-            fill: colors.gray['100'],
+            fill: 'white',
+            base: colors.gray['100'],
         },
         text: {
             foreground: colors.gray['900'],
@@ -18,22 +18,6 @@ export const blueLight: ColorScheme = {
     },
 };
 
-export const orangeLight: ColorScheme = {
-    id: 'orangeLight',
-    type: 'light',
-    colors: {
-        bg: {
-            base: colors.warmGray['100'],
-            fill: colors.warmGray['100'],
-        },
-        text: {
-            foreground: colors.warmGray['900'],
-            muted: colors.warmGray['700'],
-        },
-        primary: colors.amber,
-        neutral: colors.warmGray,
-    },
-};
 // dark theme
 export const blueDark: ColorScheme = {
     id: 'blueDark',

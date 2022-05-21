@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import MenuRoutes from '../../router/menus';
-import ThemSwitcher from '../../component/ThemeSwitch';
+import Header from './component/Header';
 const Index: FC = () => {
     return (
-        <div>
-            {/* <ThemSwitcher /> */}
+        <div className="w-screen">
+            <Header />
             <MenuRoutes />
         </div>
     );

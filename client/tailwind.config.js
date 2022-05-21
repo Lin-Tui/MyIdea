@@ -6,6 +6,7 @@ module.exports = {
         extend: {
             colors: {
                 gray1: '#F3F4F6',
+                gray2: '#4e5969',
             },
             fontSize: {
                 10: ['10px', '12px'],
@@ -19,6 +20,16 @@ module.exports = {
             },
             height: {
                 400: '400px',
+                100: '100px',
+                60: '60px',
+                20: '20px',
+            },
+            width: {
+                200: '200px',
+                150: '150px',
+                170: '170px',
+                100: '100px',
+                20: '20px',
             },
         },
     },
