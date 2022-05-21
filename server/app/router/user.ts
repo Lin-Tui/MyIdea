@@ -6,4 +6,5 @@ const userRouter = new Router<DefaultState, Context>({ prefix: '/user' }); //htt
 userRouter.post('/login', UserController.login);
 userRouter.post('/register', UserController.register);
 userRouter.get('/isLogin', UserController.isLogin);
+userRouter.post('/logout', UserController.logout);
 export default userRouter;

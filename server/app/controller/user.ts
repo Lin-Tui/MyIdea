@@ -2,8 +2,9 @@ import { Context } from 'koa';
 import UserService from '../service/user';
 import Joi from 'joi';
 import { ErrorCode, ErrTipMap } from '../constant/errCode';
+import { getCookieString } from '../util/customCookie';
 const redisStore = require('../util/redisStore');
-
+import { noAuthOperation } from '../util/Auth';
 export default class UserController {
     /**
      * 用户信息
@@ -103,6 +104,33 @@ export default class UserController {
                     };
                 }
             }
+        } catch (error: any) {
+            ctx.status = 200;
+            ctx.body = {
+                err_no: ErrorCode.UnknowError,
+                err_tips: error.message || ErrTipMap.UnknowError,
+            };
+        }
+    }
+    public static async logout(ctx: Context) {
+        try {
+            const nowTS = new Date().getTime();
+            await noAuthOperation(ctx, nowTS);
+            const sessionId = ctx.request.header.authorization?.slice(9);
+            redisStore.destroy(sessionId);
+            const customCookie = getCookieString({
+                key: 'koa.sess',
+                value: sessionId,
+                maxAge: 0,
+                httpOnly: false,
+                signed: false,
+            });
+            ctx.set('Authorization', customCookie);
+            ctx.status = 200;
+            ctx.body = {
+                err_no: 0,
+                err_tips: '退出成功',
+            };
         } catch (error: any) {
             ctx.status = 200;
             ctx.body = {

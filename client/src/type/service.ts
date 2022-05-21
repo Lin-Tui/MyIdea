@@ -30,3 +30,8 @@ export interface UserIsLoginResponse {
         isLogin: boolean;
     };
 }
+
+export interface UserLogoutResponse {
+    err_no: number;
+    err_tips: string;
+}

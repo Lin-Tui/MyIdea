@@ -9,7 +9,37 @@ import exitIcon from '../../../../image/exit.png';
 import activeExitIcon from '../../../../image/active-exit.png';
 import activeGotoIcon from '../../../../../../assert/image/dark-goto.png';
 import gotoIcon from '../../../../../../assert/image/light-goto.png';
+import { userLogout } from '../../../../../../service';
+import { useNavigate } from 'react-router-dom';
+import { useMessage } from '@vechaiui/react';
 const Dropdowm: FC = () => {
+    const navigate = useNavigate();
+    const message = useMessage();
+    const logout = async () => {
+        try {
+            const { err_no, err_tips } = await userLogout();
+            if (err_no === 0) {
+                message({
+                    message: '退出成功',
+                    status: 'success',
+                    position: 'top',
+                });
+                navigate('/login');
+            } else {
+                message({
+                    message: err_tips || '退出失败，请重试~',
+                    status: 'error',
+                    position: 'top',
+                });
+            }
+        } catch (error: any) {
+            message({
+                message: '退出失败，请重试~',
+                status: 'error',
+                position: 'top',
+            });
+        }
+    };
     return (
         <div>
             <Menu as="div" className="relative text-left">
@@ -69,6 +99,7 @@ const Dropdowm: FC = () => {
                             <Menu.Item>
                                 {({ active }) => (
                                     <button
+                                        onClick={logout}
                                         className={`${
                                             active ? 'bg-violet-500 text-white' : 'text-gray2'
                                         } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
