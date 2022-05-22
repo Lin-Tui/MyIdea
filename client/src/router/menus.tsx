@@ -8,7 +8,7 @@ const MenuRoutes = () => {
         <Suspense fallback={<div></div>}>
             <Routes>
                 {generateRoutes(menus)}
-                <Route path="*" element={<Navigate to="/" />} />
+                <Route path="*" element={<Navigate to="/home" />} />
             </Routes>
         </Suspense>
     );
@@ -24,8 +24,8 @@ function generateRoutes(data: Array<MenuItem>, result: Array<ReactElement> = [])
                 />
             );
         }
-        if (item.subs) {
-            generateRoutes(item.subs, result);
+        if (item.children) {
+            generateRoutes(item.children, result);
         }
     });
     return result;

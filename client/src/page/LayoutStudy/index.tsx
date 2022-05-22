@@ -4,7 +4,7 @@ import Flex from './Flex';
 import Position from './Position';
 const LayoutStudy: FC = () => {
     return (
-        <div>
+        <div className="w-full">
             <Position />
             <Flex />
             <Grid />

@@ -2,8 +2,8 @@ import { FC } from 'react';
 import './index.scss';
 const Flex: FC = () => {
     return (
-        <div>
-            <div className="font-bold text-30 w-srceen text-center mt-80 mb-80">Flex 布局</div>
+        <div className="w-full">
+            <div className="font-bold text-30 w-full text-center mt-80 mb-80">Flex 布局</div>
             <div className="flex-wrapper bg-gray1">
                 <div className="flex-one flex-item">One</div>
                 <div className="flex-two flex-item">Two</div>

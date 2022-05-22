@@ -22,14 +22,23 @@ module.exports = {
                 400: '400px',
                 100: '100px',
                 60: '60px',
+                50: '50px',
+                40: '40px',
                 20: '20px',
             },
             width: {
+                300: '300px',
                 200: '200px',
                 150: '150px',
                 170: '170px',
                 100: '100px',
                 20: '20px',
+            },
+            gridTemplateRows: {
+                layout: '60px 1fr',
+            },
+            gridTemplateColumns: {
+                layout: '250px 1fr',
             },
         },
     },

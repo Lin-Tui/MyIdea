@@ -21,7 +21,7 @@ cookie + session + redis：
 两者的组件数量差不多，但个人觉得在布局相关的组件上，daisyui更齐全一些，有些UI支持的交互也更友好些（比如Dropdown，vechaiui的dropdown只能在点击后才能出现，但vechaiui支持hover时就展示）。但在表单相关组件上，还是vechaiui组件更好些，尤其是form control。
 在主题上，个人觉得daiyui定义主题的方式会方便，可定义的样式更多些，但是要实现主题切换功能时，却需要引入theme-change，或者在html中加data-theme（这种方法不太行）。而vechaiui在实现主题切换上就比较方便了，它提供了VechaiProvider组件，可以通过它全局切换主题，具体实现可以参考vechaiui官网文档的源码。
 另外还有一点，vechaui实现的某个组件是基于headless ui的，也就是说还需要我们手动下载下headless ui才能使用。
-
+daisyui和vechaiui一起使用的话，会出现样式冲突问题（比如vechaiui定义的主题不生效）
 
 cookie单独使用且不加密：
 此方法非常不靠谱。

@@ -5,8 +5,8 @@ import './index.scss';
  */
 const Grid: FC = () => {
     return (
-        <div>
-            <div className="font-bold text-30 w-srceen text-center mt-80 mb-80">Grid 布局</div>
+        <div className="w-full">
+            <div className="font-bold text-30 w-full text-center mt-80 mb-80">Grid 布局</div>
             <div className="grip-wrapper bg-gray1">
                 <div className="grid-one grid-item">One</div>
                 <div className="grid-two grid-item">Two</div>
