@@ -26,7 +26,7 @@ const Login: FC = () => {
     });
     return (
         <div className="page-wrapper w-screen h-screen flex flex-col items-center justify-center">
-            <div className=" bg-white p-10  rounded-md shadow-2xl">
+            <div className=" bg-fill p-10  rounded-md shadow-2xl drak:bg-fill">
                 {isLogin ? <LoginForm /> : <ResigerForm />}
                 <div
                     className="text-center w-full text-gray-400 text-12 mt-5"

@@ -62,15 +62,20 @@ const LoginForm: FC = () => {
             <div className="text-center w-full mb-5 font-bold">账号登录</div>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <FormControl invalid={Boolean(errors.username)}>
-                    <Input {...register('username', { required: true })} placeholder="请输入账号" />
-                    {errors.username && errors.username.type === 'required' && (
-                        <FormErrorMessage>请填写账号</FormErrorMessage>
-                    )}
+                    <Input.Group>
+                        <Input
+                            {...register('username', { required: true })}
+                            type="text"
+                            placeholder="请输入账号"
+                        />
+                        {errors.username && errors.username.type === 'required' && (
+                            <FormErrorMessage>请填写账号</FormErrorMessage>
+                        )}
+                    </Input.Group>
                 </FormControl>
                 <FormControl invalid={Boolean(errors.password)}>
                     <Input.Group>
                         <Input
-                            className="pr-16"
                             type={showPassword ? 'text' : 'password'}
                             placeholder="请输入密码"
                             {...register('password', { required: true })}
