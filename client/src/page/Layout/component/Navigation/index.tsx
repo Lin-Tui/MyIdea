@@ -1,30 +1,17 @@
 import { FC } from 'react';
 import { Disclosure } from '@headlessui/react';
 import { Icon, cx, ChevronUpIcon } from '@vechaiui/react';
-import { menus, MenuItem } from '../../../../router/router.config';
+import { menus } from '../../../../router/router.config';
 import { Link, useLocation } from 'react-router-dom';
-import { useAppDispatch } from '../../../../store';
-import { appActions } from '../../../../store/features/appSlice';
 import { findParentPath } from '../../../../util';
 const Navigation: FC = () => {
-    const dispatch = useAppDispatch();
     const location = useLocation();
-    const handleOnclick = (item: MenuItem, parentItem?: MenuItem) => {
-        dispatch(
-            appActions.setActiveNavMenu({
-                activeNavMenu: {
-                    path: item.path,
-                    parentPath: parentItem?.path,
-                },
-            })
-        );
-    };
     return (
         <div className="flex pr-1 pl-2 pt-1 space-x-4 w-full h-full bg-fill dark:bg-fill shadow-navigation">
             <div className="w-full h-full">
                 {menus.map((outItem, outIndex) => {
                     return (
-                        <Disclosure>
+                        <Disclosure key={outIndex}>
                             {({ open }) => {
                                 return outItem.children ? (
                                     <>
@@ -68,7 +55,7 @@ const Navigation: FC = () => {
                                         <Disclosure.Panel className="w-full text-sm text-muted">
                                             {outItem.children.map((innerItem, innerIndex) => {
                                                 return (
-                                                    <Link to={innerItem.path}>
+                                                    <Link to={innerItem.path} key={innerIndex}>
                                                         <div
                                                             className={cx(
                                                                 'mb-1 mt-1 w-full h-50 pl-12 flex flex-row items-center rounded-sm  hover:bg-base dark:hover:bg-base hover:text-primary-500 dark:hover:text-primary-500',
@@ -76,9 +63,6 @@ const Navigation: FC = () => {
                                                                     ? 'text-primary-500 dark:text-primary-500 bg-base dark:bg-base'
                                                                     : ''
                                                             )}
-                                                            onClick={() =>
-                                                                handleOnclick(innerItem, outItem)
-                                                            }
                                                         >
                                                             <span className="font-semibold mb-1 mt-1">
                                                                 {innerItem.title}
@@ -90,7 +74,7 @@ const Navigation: FC = () => {
                                         </Disclosure.Panel>
                                     </>
                                 ) : (
-                                    <Link to={outItem.path} onClick={() => handleOnclick(outItem)}>
+                                    <Link to={outItem.path}>
                                         <div
                                             className={cx(
                                                 ' h-50  px-4 py-2 flex flex-row items-center rounded-sm w-full  hover:bg-base dark:hover:bg-base hover:text-primary-500 dark:hover:text-primary-500',

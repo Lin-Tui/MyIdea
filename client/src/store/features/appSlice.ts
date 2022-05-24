@@ -3,11 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 export interface Appstate {}
 export const appSlice = createSlice({
     name: 'app',
-    initialState: {
-        activeNavMenu: {},
-    } as Appstate,
-    reducers: {
-        setActiveNavMenu: (state, action: PayloadAction<Appstate>) => {},
-    },
+    initialState: {} as Appstate,
+    reducers: {},
 });
 export const appActions = appSlice.actions;
