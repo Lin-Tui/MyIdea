@@ -14,7 +14,7 @@ export default function ThemSwitcher() {
             </Popover.Button>
             <Popover.Panel
                 className={cx(
-                    'absolute right-0 z-50 w-150 mt-4 origin-top-right rounded-md shadow-sm outline-none border',
+                    'absolute right-50 -top-28 w-150 mt-4  rounded-md shadow-sm outline-none border',
                     'py-2 px-2',
                     'bg-white border-neutral-300 text-neutral-900 dark:text-white dark:bg-neutral-800 dark:border-neutral-700'
                 )}

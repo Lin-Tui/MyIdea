@@ -11,7 +11,7 @@ const Layout: FC = () => {
             <div className="col-start-1 col-end-2 row-start-2 row-end-3">
                 <Navigation />
             </div>
-            <div className="col-start-2 col-end-3 row-start-2 row-end-3">
+            <div className="col-start-2 col-end-3 row-start-2 row-end-3 p-6">
                 <MenuRoutes />
             </div>
         </div>

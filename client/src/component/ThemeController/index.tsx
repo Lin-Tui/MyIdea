@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { VechaiProvider, extendTheme } from '@vechaiui/react';
-import { blueLight, blueDark, redDark } from '../../config/theme.config';
+import { blueLight, blueDark } from '../../config/theme.config';
 export type ThemeContextType = {
     colorScheme?: string;
     setColorScheme: (colorScheme: string) => void;
@@ -21,12 +21,6 @@ export const themes = [
         backgroundColor: blueDark.colors.bg.base,
         primaryColor: blueDark.colors.primary['500'],
     },
-    {
-        name: 'RedDark',
-        id: 'redDark',
-        backgroundColor: redDark.colors.bg.base,
-        primaryColor: redDark.colors.primary['500'],
-    },
 ];
 
 function ThemeController({ children }: { children: React.ReactNode }) {
@@ -37,7 +31,6 @@ function ThemeController({ children }: { children: React.ReactNode }) {
             colorSchemes: {
                 blueLight,
                 blueDark,
-                redDark,
             },
         });
     }, []);

@@ -16,7 +16,8 @@ module.exports = {
                 30: ['30px', '34px'],
             },
             spacing: {
-                80: '80px',
+                40: '40px',
+                50: '50px',
             },
             height: {
                 400: '400px',
@@ -33,6 +34,13 @@ module.exports = {
                 170: '170px',
                 100: '100px',
                 20: '20px',
+            },
+            inset: {
+                50: '145px',
+                '-28': '-28px',
+            },
+            boxShadow: {
+                navigation: '0px 0px 3px 0px rgb(190, 189, 189)',
             },
             gridTemplateRows: {
                 layout: '60px 1fr',

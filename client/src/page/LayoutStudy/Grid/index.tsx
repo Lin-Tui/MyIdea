@@ -6,16 +6,16 @@ import './index.scss';
 const Grid: FC = () => {
     return (
         <div className="w-full">
-            <div className="font-bold text-30 w-full text-center mt-80 mb-80">Grid 布局</div>
-            <div className="grip-wrapper bg-gray1">
-                <div className="grid-one grid-item">One</div>
-                <div className="grid-two grid-item">Two</div>
-                <div className="grid-three grid-item">Three</div>
-                <div className="grid-four grid-item">Four</div>
-                <div className="grid-five grid-item">Five</div>
-                <div className="grid-six grid-item">Six</div>
-                <div className="grid-seven grid-item">Seven</div>
-                <div className="grid-eight grid-item">Eight</div>
+            <div className="font-bold text-30 w-full text-center mt-50 mb-50">Grid 布局</div>
+            <div className="grip-wrapper bg-fill shadow rounded-md">
+                <div className="grid-one grid-item shadow">One</div>
+                <div className="grid-two grid-item shadow">Two</div>
+                <div className="grid-three grid-item shadow">Three</div>
+                <div className="grid-four grid-item shadow">Four</div>
+                <div className="grid-five grid-item shadow">Five</div>
+                <div className="grid-six grid-item shadow">Six</div>
+                <div className="grid-seven grid-item shadow">Seven</div>
+                <div className="grid-eight grid-item shadow">Eight</div>
             </div>
         </div>
     );
