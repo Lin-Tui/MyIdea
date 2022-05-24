@@ -10,15 +10,17 @@ const Navigation: FC = () => {
         <div className="flex pr-1 pl-2 pt-1 space-x-4 w-full h-full bg-fill dark:bg-fill shadow-navigation">
             <div className="w-full h-full">
                 {menus.map((outItem, outIndex) => {
+                    const parentPath = findParentPath(location.pathname);
+                    const defaultOpen = [location.pathname, parentPath].includes(outItem.path);
                     return (
-                        <Disclosure key={outIndex}>
+                        <Disclosure key={outIndex} defaultOpen={defaultOpen}>
                             {({ open }) => {
                                 return outItem.children ? (
                                     <>
                                         <Disclosure.Button
                                             className={cx(
                                                 'mt-1 mb-1 flex flex-row h-50 items-center justify-between w-full px-4 py-2  hover:bg-base dark:hover:bg-base focus:outline-none cursor-base hover:text-primary-500 dark:hover:text-primary-500 rounded-sm',
-                                                findParentPath(location.pathname) === outItem.path
+                                                parentPath === outItem.path
                                                     ? 'text-primary-500 dark:text-primary-500'
                                                     : ''
                                             )}
