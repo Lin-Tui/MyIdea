@@ -1,6 +1,5 @@
 import { lazy, ComponentType } from 'react';
 import homeIcon from '../assert/image/home.png';
-import editorIcon from '../assert/image/editor.png';
 import experimentIcon from '../assert/image/experiment.png';
 import practiceIcon from '../assert/image/practice.png';
 const Home = lazy(() => import('../page/Home'));
