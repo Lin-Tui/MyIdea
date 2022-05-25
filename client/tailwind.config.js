@@ -43,7 +43,7 @@ module.exports = {
                 navigation: '0px 0px 3px 0px rgb(190, 189, 189)',
             },
             gridTemplateRows: {
-                layout: '60px 1fr',
+                layout: '60px 1fr 40px',
             },
             gridTemplateColumns: {
                 layout: '250px 1fr',
