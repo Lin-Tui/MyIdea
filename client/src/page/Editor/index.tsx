@@ -5,9 +5,9 @@ import EditorHeader from './component/EditorHeader';
 import RunningResult from './component/RunningResult';
 const Editor: FC = () => {
     return (
-        <div>
-            <div className="grid gap-3 grid-cols-2">
-                <div className="col-start-1 col-end-3">
+        <div className="w-full h-full bg-fill rounded-md shadow-sm ">
+            <div className="grid gap-3 grid-cols-editorLayout grid-rows-editorLayout w-full h-full">
+                <div className="col-start-1 col-end-3 w-full h-full">
                     <EditorHeader />
                 </div>
                 <div className="col-start-1 col-end-2 row-start-2 row-end-3">

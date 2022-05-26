@@ -1,10 +1,8 @@
 import { FC } from 'react';
-// import { useAppSelector } from '../../../../store/index';
 import messageIcon from '../../image/message.png';
 import './index.scss';
 import Dropdowm from './component/Dropdown';
 const Header: FC = () => {
-    // const user = useAppSelector(state => state.user);
     return (
         <div className="header-wrapper w-full  flex flex-row justify-between items-center pl-10 pr-10 bg-fill">
             <div className="w-100 text-25 font-bold text-center text-primary-500">MyIdea</div>

@@ -42,11 +42,16 @@ module.exports = {
             boxShadow: {
                 navigation: '0px 0px 3px 0px rgb(190, 189, 189)',
             },
+            borderColor: {
+                gray1: '#86909c',
+            },
             gridTemplateRows: {
                 layout: '60px 1fr 40px',
+                editorLayout: '50px 1fr 1fr',
             },
             gridTemplateColumns: {
                 layout: '250px 1fr',
+                editorLayout: '2fr 3fr',
             },
         },
     },

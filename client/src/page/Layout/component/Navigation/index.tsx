@@ -4,6 +4,7 @@ import { Icon, cx, ChevronUpIcon } from '@vechaiui/react';
 import { menus } from '../../../../router/router.config';
 import { Link, useLocation } from 'react-router-dom';
 import { findParentPath } from '../../../../util';
+import './index.scss';
 const Navigation: FC = () => {
     const location = useLocation();
     return (
@@ -19,7 +20,7 @@ const Navigation: FC = () => {
                                     <>
                                         <Disclosure.Button
                                             className={cx(
-                                                'mt-1 mb-1 flex flex-row h-50 items-center justify-between w-full px-4 py-2  hover:bg-base dark:hover:bg-base focus:outline-none cursor-base hover:text-primary-500 dark:hover:text-primary-500 rounded-sm',
+                                                'mt-1 mb-1  justify-between px-4 py-2  active-item',
                                                 parentPath === outItem.path
                                                     ? 'text-primary-500 dark:text-primary-500'
                                                     : ''
@@ -60,7 +61,7 @@ const Navigation: FC = () => {
                                                     <Link to={innerItem.path} key={innerIndex}>
                                                         <div
                                                             className={cx(
-                                                                'mb-1 mt-1 w-full h-50 pl-12 flex flex-row items-center rounded-sm  hover:bg-base dark:hover:bg-base hover:text-primary-500 dark:hover:text-primary-500',
+                                                                'mb-1 mt-1  pl-12  active-item',
                                                                 location.pathname === innerItem.path
                                                                     ? 'text-primary-500 dark:text-primary-500 bg-base dark:bg-base'
                                                                     : ''
@@ -79,7 +80,7 @@ const Navigation: FC = () => {
                                     <Link to={outItem.path}>
                                         <div
                                             className={cx(
-                                                ' h-50  px-4 py-2 flex flex-row items-center rounded-sm w-full  hover:bg-base dark:hover:bg-base hover:text-primary-500 dark:hover:text-primary-500',
+                                                'px-4 py-2  active-item',
                                                 location.pathname === outItem.path
                                                     ? 'text-primary-500 dark:text-primary-500 bg-base dark:bg-base'
                                                     : ''
