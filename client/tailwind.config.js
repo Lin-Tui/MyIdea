@@ -51,7 +51,7 @@ module.exports = {
             },
             gridTemplateColumns: {
                 layout: '250px 1fr',
-                editorLayout: '2fr 3fr',
+                editorLayout: '1fr 1fr',
             },
         },
     },

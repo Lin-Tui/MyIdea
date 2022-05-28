@@ -1,10 +1,9 @@
 import { FC } from 'react';
-import Editor from '../..';
+import Editor from '../Editor/index';
 const HTMLEditor: FC = () => {
     return (
         <div>
-            HTML Editor
-            <Editor />
+            <Editor lang="html" setCode={() => {}} value="" />
         </div>
     );
 };

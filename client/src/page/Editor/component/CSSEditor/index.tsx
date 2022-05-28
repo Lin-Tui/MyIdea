@@ -1,5 +1,10 @@
 import { FC } from 'react';
+import Editor from '../Editor';
 const CSSEditor: FC = () => {
-    return <div>CSS Header</div>;
+    return (
+        <div>
+            <Editor lang="css" setCode={() => {}} value="" />
+        </div>
+    );
 };
 export default CSSEditor;

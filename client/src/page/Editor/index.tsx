@@ -3,20 +3,24 @@ import CSSEditor from './component/CSSEditor';
 import HTMLEditor from './component/HTMLEditor';
 import EditorHeader from './component/EditorHeader';
 import RunningResult from './component/RunningResult';
+import JSEditor from './component/JSEditor';
 const Editor: FC = () => {
     return (
-        <div className="w-full h-full bg-fill rounded-md shadow-sm ">
-            <div className="grid gap-3 grid-cols-editorLayout grid-rows-editorLayout w-full h-full">
-                <div className="col-start-1 col-end-3 w-full h-full">
+        <div className="bg-fill rounded-md shadow">
+            <div className="grid grid-cols-editorLayout grid-rows-editorLayout">
+                <div className="col-start-1 col-end-3">
                     <EditorHeader />
                 </div>
-                <div className="col-start-1 col-end-2 row-start-2 row-end-3">
+                <div className="col-start-1 col-end-2 row-start-2 row-end-3 h-full w-full border-neutral-200 dark:border-neutral-700 border-b-2">
                     <HTMLEditor />
                 </div>
-                <div className="col-start-1 col-end-2 row-start-3 row-end4">
+                <div className="col-start-2 col-end-3 row-start-2 row-end-3 border-neutral-200 dark:border-neutral-700 border-b-2 border-l-2">
                     <CSSEditor />
                 </div>
-                <div className="col-start-2 col-end-3 row-start-2 row-end-4">
+                <div className="col-start-1 col-end-2 row-start-3 row-end-4 ">
+                    <JSEditor />
+                </div>
+                <div className="col-start-2 col-end-3 row-start-3 row-end-4">
                     <RunningResult />
                 </div>
             </div>
