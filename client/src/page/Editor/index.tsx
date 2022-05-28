@@ -3,7 +3,7 @@ import CSSEditor from './component/CSSEditor';
 import HTMLEditor from './component/HTMLEditor';
 import EditorHeader from './component/EditorHeader';
 import RunningResult from './component/RunningResult';
-import JSEditor from './component/JSEditor';
+import JSEditor from './component/JSEditor/index';
 const Editor: FC = () => {
     return (
         <div className="bg-fill rounded-md shadow">
@@ -20,7 +20,7 @@ const Editor: FC = () => {
                 <div className="col-start-1 col-end-2 row-start-3 row-end-4 ">
                     <JSEditor />
                 </div>
-                <div className="col-start-2 col-end-3 row-start-3 row-end-4">
+                <div className="col-start-2 col-end-3 row-start-3 row-end-4 border-l-2 border-neutral-200 dark:border-neutral-700">
                     <RunningResult />
                 </div>
             </div>

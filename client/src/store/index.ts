@@ -1,12 +1,14 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import { userSlice } from './features/userSlice';
 import { appSlice } from './features/appSlice';
+import { experimentSlice } from './features/experimentSlice';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 export const store = configureStore({
     reducer: {
         [userSlice.name]: userSlice.reducer,
         [appSlice.name]: appSlice.reducer,
+        [experimentSlice.name]: experimentSlice.reducer,
     },
 });
 
