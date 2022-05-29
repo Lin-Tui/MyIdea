@@ -30,9 +30,9 @@ cookie单独使用且不加密：
 //TODO
 * monorepo
 * 头像
-* 
+* 编辑器横向拖动效果
 
 // TODO
 * redux
 * route
-* 
+* throttle，debounce

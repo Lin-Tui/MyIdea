@@ -5,6 +5,8 @@ import practiceIcon from '../assert/image/practice.png';
 const Home = lazy(() => import('../page/Home'));
 const LayoutStudy = lazy(() => import('../page/LayoutStudy'));
 const Editor = lazy(() => import('../page/Editor'));
+const Dragger = lazy(() => import('../page/Dragger'));
+
 export interface MenuItem {
     title: string;
     icon?: string;
@@ -29,6 +31,11 @@ export const menus: Array<MenuItem> = [
                 title: '布局',
                 path: '/layout',
                 component: LayoutStudy,
+            },
+            {
+                title: 'React-Grid-Layout',
+                path: '/dragger',
+                component: Dragger,
             },
         ],
     },

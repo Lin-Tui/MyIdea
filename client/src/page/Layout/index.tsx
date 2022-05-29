@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import MenuRoutes from '../../router/menus';
 import Footer from './component/Footer';
 import Header from './component/Header';
