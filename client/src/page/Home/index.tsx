@@ -1,7 +1,15 @@
 import React, { FC } from 'react';
-import { useAppSelector } from '../../store/index';
 const Home: FC = () => {
-    const user = useAppSelector(state => state.user);
-    return <div>{user.username}</div>;
+    return (
+        <div className="w-full h-full">
+            <iframe
+                title="博客"
+                src="https://lin-tui.github.io/"
+                height={'100%'}
+                width={'100%'}
+                className="rounded-md"
+            />
+        </div>
+    );
 };
 export default Home;
