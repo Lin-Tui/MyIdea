@@ -4,7 +4,7 @@ const Home: FC = () => {
         <div className="w-full h-full">
             <iframe
                 title="博客"
-                src="https://lin-tui.github.io/"
+                src="https://myidea.tk/"
                 height={'100%'}
                 width={'100%'}
                 className="rounded-md"
