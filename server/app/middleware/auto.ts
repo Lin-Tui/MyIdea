@@ -1,7 +1,7 @@
 import { Context, Next } from 'koa';
 const redisStore = require('../util/redisStore');
 import { ErrorCode, ErrTipMap } from '../constant/errCode';
-import { noAuthOperation } from '../util/Auth';
+import { noAuthOperation } from '../util/auth';
 const authHander = async (ctx: Context, next: Next) => {
     try {
         const nowTS = new Date().getTime();

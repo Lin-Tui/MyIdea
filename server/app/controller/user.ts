@@ -4,7 +4,7 @@ import Joi from 'joi';
 import { ErrorCode, ErrTipMap } from '../constant/errCode';
 import { getCookieString } from '../util/customCookie';
 const redisStore = require('../util/redisStore');
-import { noAuthOperation } from '../util/Auth';
+import { noAuthOperation } from '../util/auth';
 export default class UserController {
     /**
      * 用户信息
