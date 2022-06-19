@@ -1,4 +1,4 @@
-export const UserLogin = `/user/login`;
-export const UserRegister = `/user/register`;
-export const UserIsLogin = '/user/isLogin';
-export const UserLogout = '/user/logout';
+export const UserLogin = `/api/user/login`;
+export const UserRegister = `/api/user/register`;
+export const UserIsLogin = '/api/user/isLogin';
+export const UserLogout = '/api/user/logout';

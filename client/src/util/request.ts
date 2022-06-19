@@ -58,7 +58,6 @@ function handleError(err: AxiosError) {
         console.log(errTips);
         return Promise.reject(err);
     } else {
-        console.log('请求超时，请刷新重试');
         return Promise.reject('请求超时，请刷新重试');
     }
 }
