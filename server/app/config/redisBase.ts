@@ -1,11 +1,6 @@
 import { RedisConf } from '../type';
-
+import { prodRedisConf } from './security';
 const devRedisConf: RedisConf = {
-    host: '127.0.0.1',
-    port: '6379',
-};
-
-const prodRedisConf: RedisConf = {
     host: '127.0.0.1',
     port: '6379',
 };
