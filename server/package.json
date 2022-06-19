@@ -6,11 +6,10 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon --exec ts-node app.ts",
     "build-ts": "tsc",
-    "build:test": "rm -fr dist && npm run lint && npm run build-ts",
+    "build:test": "rm -fr dist && npm run build-ts",
     "serve:test": "cross-env NODE_ENV=development pm2 startOrReload pm2-start.json --no-daemon",
-    "build:production": "rm -fr dist && npm run lint && npm run build-ts",
+    "build:production": "npm run build-ts",
     "serve:production": "cross-env NODE_ENV=production pm2 startOrReload pm2-start.json --no-daemon",
-    "lint": "eslint \"app/**/*.ts\" --fix",
     "stop": "pm2 status && pm2 stop all"
   },
   "author": "",
